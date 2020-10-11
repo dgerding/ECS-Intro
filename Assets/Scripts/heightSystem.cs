@@ -9,12 +9,21 @@ using Unity.Entities;
 /// </remarks>
 public class HeightSystem : ComponentSystem
 {
+    /// <summary>
+    /// OnUpdate, overridden from the ComponentSystem base class, is called every frame, like a MonoBehavior Update method.
+    /// </summary>
     protected override void OnUpdate()
     {
-        // Iterate through all entities containing a LevelComponent
+        
+        //Note that we're using the ECS Entities version of "ForEach"
+        //and that the value is passed in by reference so that 
+        //changes in the body of the loop are effected on the actual,
+        //referenced heightComponent that exists in memory outside 
+        //the loop.
         Entities.ForEach((ref HeightComponent heightComponent) =>
         {
             // Increment level by 1 per second
+            //(Also note the new required casing for DeltaTime)
             heightComponent.height += 1f * Time.DeltaTime;
         });
     }
