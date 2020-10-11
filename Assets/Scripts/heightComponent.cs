@@ -2,7 +2,7 @@
 using Unity.Entities;
 
 /// <summary>
-/// Components are always structs, which are value types readily arranged in memory
+/// A "Height" Component. Components are always structs, which are value types and whic are easily arranged in memory
 /// </summary>
 /// <remarks>
 /// Implementing IComponentData future-proofs your components, since IComponentData 
